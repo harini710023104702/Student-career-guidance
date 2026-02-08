@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guidance</title>
+    <style>
+        /* ===== General Styles ===== */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background: #3B5CA3;
+            color: #fff;
+            padding: 15px 0;
+        }
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        nav {
+            text-align: center;
+            margin-top: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #fff;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover { text-decoration: underline; }
+
+        /* ===== Tip Carousel ===== */
+        .tip-carousel {
+            margin: 20px auto;
+            max-width: 700px;
+            background: #e0f2f1;
+            padding: 20px 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #006d77;
+            position: relative;
+            font-size: 18px;
+        }
+        .tip-carousel span { display: none; }
+        .tip-carousel span.active { display: block; animation: fadeIn 1s ease-in-out; }
+        @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
+        .tip-carousel button {
+            background: #008891;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            position: absolute;
+            top: 10px;
+        }
+        .tip-carousel button:hover { background: #005f63; }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+
+        /* ===== Guidance Cards ===== */
+        .guidance-section {
+            padding: 30px 50px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .guidance-section h2 {
+            text-align: center;
+            margin-bottom: 10px;
+            color: #3B5CA3;
+        }
+        .guidance-section .subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        /* ** Ensure 3 cards per row ** */
+        .guidance-section .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* exactly 3 per row */
+            gap: 20px;
+        }
+
+        .guidance-section .card {
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .guidance-section .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .guidance-section .card h3 {
+            margin: 10px 0;
+            color: #3B5CA3;
+        }
+        .guidance-section .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+
+        /* ===== Modal ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top:0; left:0;
+            width:100%; height:100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: #f0fdfa;
+            padding: 20px 30px;
+            border-radius: 10px;
+            max-width: 600px;
+            width: 90%;
+            position: relative;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            text-align: left;
+        }
+        .close-btn {
+            position: absolute;
+            top:10px;
+            right:15px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #3B5CA3;
+        }
+
+        /* ===== Guidance Process ===== */
+        .guidance-steps {
+            padding: 30px 50px;
+            max-width: 800px;
+            margin: auto;
+        }
+        .guidance-steps h2 {
+            text-align: center;
+            color: #3B5CA3;
+        }
+        details {
+            background: #f0fdfa;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        summary {
+            font-weight: bold;
+            cursor: pointer;
+            color: #3B5CA3;
+        }
+
+        /* ===== Footer ===== */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: #3B5CA3;
+            color: white;
+            margin-top: 50px;
+        }
+
+        /* ===== Responsive ===== */
+        @media screen and (max-width: 900px) {
+            .guidance-section .cards { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media screen and (max-width: 600px) {
+            .guidance-section .cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Career Guidance</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guidance.html">Guidance</a>
+        <a href="careers.html">Careers</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- ===== TIP CAROUSEL ===== -->
+<section class="tip-carousel">
+    <button class="prev" onclick="prevTip()">&#8592;</button>
+    <button class="next" onclick="nextTip()">&#8594;</button>
+    <span class="active">💡 "Know yourself before choosing a career."</span>
+    <span>💡 "Continuous learning is the key to success."</span>
+    <span>💡 "Set goals and track your progress regularly."</span>
+    <span>💡 "Soft skills matter as much as technical skills."</span>
+    <span>💡 "Explore multiple options before finalizing your path."</span>
+</section>
+
+<!-- ===== GUIDANCE CARDS ===== -->
+<section class="guidance-section">
+    <h2>How We Guide You</h2>
+    <p class="subtitle">Click on the images to get detailed guidance.</p>
+
+    <div class="cards">
+        <div class="card" onclick="showModal('Identify Interests 🔍','Discover what you truly enjoy and where your passion lies. Activities: self-assessment tests, personality quizzes.')">
+            <img src="images/intrest.jpg" alt="Identify Interests">
+            <h3>Identify Interests 🔍</h3>
+        </div>
+        <div class="card" onclick="showModal('Analyze Strengths 💪','Understand your academic strengths and personal skills. Activities: skill tests, workshops, mentor feedback.')">
+            <img src="images/skills.jpg" alt="Analyze Strengths">
+            <h3>Analyze Strengths 💪</h3>
+        </div>
+        <div class="card" onclick="showModal('Choose Career Path 🛤️','Select suitable career options based on your profile. Tips: explore multiple fields, research future scope.')">
+            <img src="images/career-path.jpg" alt="Choose Career Path">
+            <h3>Choose Career Path 🛤️</h3>
+        </div>
+        <div class="card" onclick="showModal('Skill Development 🏫','Enhance skills through workshops, online courses, and training. Activities: coding, communication, leadership.')">
+            <img src="images/skills-dev.jpg" alt="Skill Development">
+            <h3>Skill Development 🏫</h3>
+        </div>
+        <div class="card" onclick="showModal('Track Progress 📈','Monitor achievements and stay on track to reach your goals. Tools: progress charts, mentor feedback, self-evaluation.')">
+            <img src="images/progress.jpg" alt="Track Progress">
+            <h3>Track Progress 📈</h3>
+        </div>
+        <div class="card" onclick="showModal('Career Planning 🗺️','Create a detailed plan including courses, internships, and skill-building steps for success.')">
+            <img src="images/career-planning.jpg" alt="Career Planning">
+            <h3>Career Planning 🗺️</h3>
+        </div>
+    </div>
+</section>
+
+<!-- ===== GUIDANCE PROCESS ===== -->
+<section class="guidance-steps">
+    <h2>Our Guidance Process</h2>
+
+    <details>
+        <summary>1️⃣ Career Assessment</summary>
+        <p>Analyze interests, aptitude, and skills to identify potential career options.</p>
+        <p>Tools: aptitude tests, personality quizzes, mentor feedback sessions.</p>
+    </details>
+    <details>
+        <summary>2️⃣ Goal Setting</summary>
+        <p>Set achievable academic and career goals based on your profile.</p>
+        <p>Tools: SMART goal templates, tracking apps, mentorship guidance.</p>
+    </details>
+    <details>
+        <summary>3️⃣ Career Comparison</summary>
+        <p>Compare career paths, opportunities, and future prospects.</p>
+        <p>Tools: career charts, salary stats, growth projections, mentorship advice.</p>
+    </details>
+    <details>
+        <summary>4️⃣ Course & College Guidance</summary>
+        <p>Recommend suitable courses, certifications, and colleges for success.</p>
+        <p>Tools: college rankings, course syllabi, eligibility analysis, mentorship sessions.</p>
+    </details>
+    <details>
+        <summary>5️⃣ Mentorship</summary>
+        <p>Provide guidance, mentoring, and support throughout the journey.</p>
+        <p>Tools: one-on-one mentorship, workshops, online webinars, feedback loops.</p>
+    </details>
+
+    <!-- Extra FAQ below -->
+    <details>
+        <summary>FAQs</summary>
+        <p><b>Q:</b> Can I change my career path later?<br>
+           <b>A:</b> Yes, with guidance and skill-building, you can pivot anytime.</p>
+        <p><b>Q:</b> Do you provide online mentoring?<br>
+           <b>A:</b> Yes, both online and offline mentorship sessions are available.</p>
+        <p><b>Q:</b> How long does career guidance take?<br>
+           <b>A:</b> Depends on individual needs, typically 1–3 months for full assessment and planning.</p>
+    </details>
+</section>
+
+<!-- ===== MODAL ===== -->
+<div class="modal" id="infoModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Student Career Guidance | Designed with ❤️ by our team</p>
+</footer>
+
+<script>
+    /* ===== Modal Function ===== */
+    function showModal(title, text) {
+        document.getElementById('modalTitle').innerText = title;
+        document.getElementById('modalText').innerText = text;
+        document.getElementById('infoModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('infoModal').style.display = 'none';
+    }
+
+    /* ===== Tip Carousel ===== */
+    let currentTip = 0;
+    const tips = document.querySelectorAll('.tip-carousel span');
+    function showTip(index) {
+        tips.forEach((tip, i) => tip.classList.remove('active'));
+        tips[index].classList.add('active');
+    }
+    function nextTip() {
+        currentTip = (currentTip + 1) % tips.length;
+        showTip(currentTip);
+    }
+    function prevTip() {
+        currentTip = (currentTip - 1 + tips.length) % tips.length;
+        showTip(currentTip);
+    }
+    setInterval(nextTip, 5000);
+</script>
+
+</body>
+</html>

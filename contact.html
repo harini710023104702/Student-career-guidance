@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<body>
+
+<header>
+<center>
+    <h1>Contact Us</h1>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guidance.html">Guidance</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html">Contact</a>
+<a href="about.html">About Us</a>
+    </nav>
+</center>
+</header>
+
+<section class="contact-section">
+    <h2>Get in Touch</h2>
+    <p>Fill the form below and we will contact you soon.</p>
+
+    <form onsubmit="return validateForm()">
+
+        <label>Full Name</label><br>
+        <input type="text" id="name" placeholder="Enter your name"><br>
+        <span id="nameError" class="error"></span><br>
+
+        <label>Email Address</label><br>
+        <input type="email" id="email" placeholder="Enter your email"><br>
+        <span id="emailError" class="error"></span><br>
+
+        <label>Phone Number</label><br>
+        <input type="text" id="phone" placeholder="Enter your phone number"><br>
+        <span id="phoneError" class="error"></span><br>
+
+        <label>Interested Career</label><br>
+        <select id="career">
+            <option value="">-- Select Career --</option>
+            <option>Software Engineer</option>
+            <option>Doctor</option>
+            <option>Lawyer</option>
+        </select><br><br>
+
+        <label>Message</label><br>
+        <textarea id="message" rows="4" placeholder="Your message"></textarea><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <p id="successMsg" class="success"></p>
+</section>
+
+</body>
+</html>

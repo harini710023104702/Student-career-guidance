@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - Student Career Guidance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ===== GLOBAL ===== */
+        body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f3f5fb; color:#333; }
+        a { text-decoration: none; }
+
+        /* ===== HEADER ===== */
+        header {
+            background: #3B5CA3; /* new color */
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        header nav a {
+            color: white;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+        header nav a:hover { color: #8fa6e0; }
+
+        /* ===== HERO/BANNER ===== */
+        .hero {
+            background: linear-gradient(rgba(59,92,163,0.8), rgba(59,92,163,0.8)), url('images/about-banner.jpg') no-repeat center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+        }
+        .hero h2 { font-size: 42px; margin-bottom: 10px; }
+        .hero p { font-size: 20px; max-width: 700px; margin: auto; }
+
+        /* ===== CARDS ===== */
+        .cards { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin: 40px 20px; }
+        .cards .card {
+            flex: 1 1 30%;
+            background: #e6ebf9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, background 0.3s;
+            cursor: pointer;
+        }
+        .cards .card:hover { transform: translateY(-5px); background: #d0d8f4; }
+        .cards .card h3 { color: #3B5CA3; margin-bottom: 15px; }
+
+        /* ===== TEAM ===== */
+        .about-team { display: flex; justify-content: space-around; gap: 20px; flex-wrap: wrap; margin: 30px 20px; }
+        .member {
+            background: #e6ebf9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 250px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .member:hover { transform: translateY(-5px); }
+        .member img { width: 120px; height: 120px; border-radius: 50%; margin-bottom: 10px; }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { position: relative; max-width: 800px; margin: 40px auto; background: #e6ebf9; padding: 30px 20px; border-radius: 10px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .testimonials p { font-style: italic; color: #3B5CA3; font-size: 18px; display: none; }
+        .testimonials p.active { display: block; animation: fade 1s ease-in; }
+        @keyframes fade { from {opacity:0;} to {opacity:1;} }
+        .testimonial-buttons { margin-top: 15px; }
+        .testimonial-buttons button {
+            background: #3B5CA3; color: white; border: none;
+            padding: 8px 14px; margin: 0 5px; border-radius: 5px; cursor: pointer; font-weight: bold;
+        }
+        .testimonial-buttons button:hover { background: #1f356f; }
+
+        /* ===== CTA ===== */
+        .cta {
+            background: #3B5CA3;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: 10px;
+            margin: 40px 20px;
+        }
+        .cta a {
+            background: #8fa6e0;
+            color: #3B5CA3;
+            text-decoration: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin: 10px;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        .cta a:hover { background: #1f356f; color: #fff; }
+
+        /* ===== FOOTER ===== */
+        footer { background: #e6ebf9; text-align: center; padding: 15px 0; color: #3B5CA3; font-size: 14px; }
+
+        /* ===== MODAL ===== */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); }
+        .modal-content { background: white; margin: 10% auto; padding: 20px; width: 80%; max-width: 600px; border-radius: 10px; position: relative; }
+        .close { position: absolute; top: 10px; right: 15px; font-size: 24px; cursor: pointer; color: #3B5CA3; }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <h1>Student Career Guidance System</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="guidance.html">Guidance</a>
+        <a href="careers.html">Careers</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Banner -->
+<section class="hero">
+    <h2>About Us</h2>
+    <p>Empowering students to make informed career choices with expert guidance</p>
+</section>
+
+<!-- Mission, Vision, Values -->
+<section class="cards">
+    <div class="card" onclick="openModal('mission')">
+        <h3>Our Mission</h3>
+        <p>Click to see more</p>
+    </div>
+    <div class="card" onclick="openModal('vision')">
+        <h3>Our Vision</h3>
+        <p>Click to see more</p>
+    </div>
+    <div class="card" onclick="openModal('values')">
+        <h3>Core Values</h3>
+        <p>Click to see more</p>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="about-team">
+    <div class="member">
+        <img src="images/team1.jpg" alt="Harini">
+        <h3>HARINI</h3>
+        <p>Founder & Career Coach</p>
+    </div>
+    <div class="member">
+        <img src="images/team2.jpg" alt="Prathiksha">
+        <h3>PRATHIKSHA</h3>
+        <p>Guidance Counselor</p>
+    </div>
+    <div class="member">
+        <img src="images/team3.jpg" alt="Madhumitha">
+        <h3>MADHUMITHA</h3>
+        <p>Content Specialist</p>
+    </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials">
+    <p class="active">🌟 "Thanks to Student Career Guidance, I discovered my passion for coding!" – Ananya</p>
+    <p>🌟 "Career counseling helped my daughter choose the right stream. Excellent guidance!" – Mr. Ramesh</p>
+    <p>🌟 "I was guided to choose courses aligned with my skills and interests." – Riya</p>
+    <div class="testimonial-buttons">
+        <button onclick="showTestimonial(0)">1</button>
+        <button onclick="showTestimonial(1)">2</button>
+        <button onclick="showTestimonial(2)">3</button>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta">
+    <h2>Start Your Career Journey Today</h2>
+    <a href="careers.html">Explore Career Options</a>
+    <a href="guidance.html">Join Guidance Programs</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>© 2026 Student Career Guidance</p>
+</footer>
+
+<!-- Modals -->
+<div id="mission" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('mission')">&times;</span>
+        <h2>Our Mission</h2>
+        <p>Empower students to make informed career choices, provide expert guidance, and help plan a successful future.</p>
+    </div>
+</div>
+
+<div id="vision" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('vision')">&times;</span>
+        <h2>Our Vision</h2>
+        <p>We envision every student achieving success with clarity and confidence in their chosen career path.</p>
+    </div>
+</div>
+
+<div id="values" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal('values')">&times;</span>
+        <h2>Core Values</h2>
+        <ul>
+            <li>💡 Integrity</li>
+            <li>🤝 Empathy</li>
+            <li>🏆 Excellence</li>
+            <li>🚀 Innovation</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    function openModal(id) { document.getElementById(id).style.display = 'block'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    function showTestimonial(n) {
+        const testimonials = document.querySelectorAll('.testimonials p');
+        testimonials.forEach(p => p.classList.remove('active'));
+        testimonials[n].classList.add('active');
+    }
+</script>
+
+</body>
+</html>
